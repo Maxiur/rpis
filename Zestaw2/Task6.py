@@ -9,7 +9,7 @@ class CardSimulation:
 
     def draw_three_cards(self):
         """b) Pojedyncze losowanie 3 kart i sprawdzenie trefli"""
-        deck = list(range(52))
+        deck = list(range(52)) # lista liczb od 0 do 51
         hand = random.sample(deck, 3) # losowanie bez zwracania
         """Załóźmy że trefle są liczbami od 0 do 12"""
         return all(card >= 13 for card in hand) # True jeśli nie wylosowało żadnego trefla
@@ -34,7 +34,7 @@ class CardSimulation:
             # Spradzamy poprawność co 1000 prób
             if i % 1000 == 0:
                 prob_estimate = successes / i
-                if abs(prob_estimate -  9139 / 22100) < self.tolerance:
+                if abs(prob_estimate -  703 / 1700) < self.tolerance:
                     break
 
         return i, prob_estimate
@@ -42,7 +42,7 @@ class CardSimulation:
 def main():
     card1 = CardSimulation(tolerance=0.001) # 0.1%
     card2 = CardSimulation(tolerance=0.003) # 0.3%
-    card3 = CardSimulation(tolerance=0.05) # 0.5%
+    card3 = CardSimulation(tolerance=0.005) # 0.5%
     simulations = [card1, card2, card3]
 
     for i, simulation in enumerate(simulations, start=1):
@@ -52,7 +52,7 @@ def main():
         print(f"   Prawdopodobieństwo z dużej próbki ({simulation.samples}): {prob_fixed_samples * 100:.2f}%")
         print(f"   Liczba prób dla tolerancji {simulation.tolerance * 100:.1f}%: {num_trials}")
         print(f"   Symulowane prawdopodobieństwo: {prob_estimate * 100:.2f}%")
-        print(f"   Prawdopodobieństwo teoretyczne: {9139 / 22100 * 100:.2f}%\n")
+        print(f"   Prawdopodobieństwo teoretyczne: {703 / 17:.2f}%\n")
 
 if __name__ == "__main__":
     main()
