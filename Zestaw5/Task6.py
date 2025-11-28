@@ -8,20 +8,6 @@ class FGP_Vn:
 
     def expectedFunction(self, y: int):
         return np.power(y, (1.0 - self.n) / self.n) / (2.0 * self.n)
-    #
-    # def expectedFunction(self, v: np.ndarray):
-    #     V_max = 2 ** self.n
-    #     n_float = float(self.n)
-    #     f_v = np.zeros_like(v, dtype=float)
-    #
-    #     valid_range = (v > 0) & (v < V_max)
-    #     exponent = (1.0 / n_float) - 1.0
-    #     constant = 1.0 / (2.0 * n_float)
-    #
-    #     # Obliczenie gęstości, zwracanie 0 dla v poza (0, 2^n)
-    #     f_v[valid_range] = constant * np.power(v[valid_range], exponent)
-    #
-    #     return f_v
 
     def generateSamples(self):
         # Generowanie n-samples długości boku X ~ U(0, 2)
