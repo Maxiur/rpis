@@ -50,10 +50,10 @@ def simulate_and_plot(n_values: list[int], N_samples: int):
         Vn_samples = model.generateSamples()
         ax.hist(Vn_samples, bins=100, density=True, alpha=0.6, color='skyblue', label='Numeryczne')
 
-        # 2. Analityczna
-        v_theory = np.linspace(1e-6, V_max, 500)
-        f_v_theory = model.expectedFunction(v_theory)
-        ax.plot(v_theory, f_v_theory, color='red', linewidth=2, label='Analityczne')
+        # # 2. Analityczna
+        # v_theory = np.linspace(1e-6, V_max, 500)
+        # f_v_theory = model.expectedFunction(v_theory)
+        # ax.plot(v_theory, f_v_theory, color='red', linewidth=2, label='Analityczne')
 
         # Ustawienia wykresu
         ax.set_title(f'Wymiar $n = {n}$')
@@ -64,11 +64,7 @@ def simulate_and_plot(n_values: list[int], N_samples: int):
         ax.legend(loc='upper right')
 
         # Ustawienie X i Y (Korekta dla n=20)
-        if n == 20:
-            # Używamy wyższej wartości startowej, np. 0.01, aby uniknąć skoków
-            ax.set_xlim(0, 0.2) # Ograniczamy X do 0.2 (jest to bardziej wizualne niż 1.0)
-            ax.set_ylim(0, 0.2)
-        elif n <= 3:
+        if n <= 3:
             ax.set_ylim(0, 1.0)
         else:
             ax.set_ylim(0, 0.6)
@@ -80,9 +76,9 @@ def simulate_and_plot(n_values: list[int], N_samples: int):
 
 def main():
     samples = 10_000_000
-    simulate_and_plot([1, 2, 3, 4, 5], samples)
+    simulate_and_plot([1, 2, 3, 4, 5, 20], samples)
 
-    simulate_and_plot([20], samples)
+    # simulate_and_plot([20], samples)
 
 
 if __name__ == "__main__":
