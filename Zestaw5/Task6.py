@@ -1,12 +1,15 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from numpy.typing import NDArray
+
+vector = NDArray[float]
 
 class FGP_Vn:
     def __init__(self, n: int, samples: int):
         self.samples = samples
         self.n = n
 
-    def expectedFunction(self, y: int):
+    def expectedFunction(self, y: vector):
         return np.power(y, (1.0 - self.n) / self.n) / (2.0 * self.n)
 
     def generateSamples(self):
@@ -17,7 +20,6 @@ class FGP_Vn:
         Vn = X ** self.n
 
         return Vn
-
 
 def simulate_and_plot(n_values: list[int], N_samples: int):
 
@@ -50,9 +52,6 @@ def simulate_and_plot(n_values: list[int], N_samples: int):
         ax.legend(loc='upper right')
 
         # Ustawienie X i Y (Korekta dla n=20)
-        if n == 20:
-            print(Vn_samples)
-
         if n <= 3:
             ax.set_ylim(0, 1.0)
         else:
