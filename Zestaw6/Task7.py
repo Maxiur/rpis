@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.stats import norm
 from math import gamma
 
 def generate_normal_dist():
@@ -30,7 +29,7 @@ def generate_plot(a: int, samples: int, bins: int):
     plt.ylabel("Prawdopodobieństwo")
     plt.xlim(-0.1)
     plt.legend()
-    plt.show()
+    plt.show()t
     plt.savefig("histogram" + ".png")
 
 if __name__ == "__main__":
