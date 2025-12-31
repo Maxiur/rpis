@@ -34,8 +34,8 @@ def generate_plot(a: int, samples: int, bins: int):
     plt.ylabel("Prawdopodobieństwo")
     plt.xlim(-0.1)
     plt.legend()
-    plt.show()
     plt.savefig("histogram" + ".png")
+    plt.show()
 
 if __name__ == "__main__":
     generate_plot(3, 500_000, 100)
